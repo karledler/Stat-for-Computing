@@ -1,0 +1,70 @@
+//Field.java
+
+public class Field
+   {
+      public static void main(String [] args)
+      {
+         double avg = 0;
+         int total = 0;
+      
+         MultiDie DieOne = new MultiDie();
+         MultiDie DieTwo = new MultiDie();
+         
+         int roll = 0;
+         int N = 1000000;
+         int flips = 0;
+       
+       while(flips<N)
+       { 
+         int won=0;
+         int loss=0;
+         DieOne.roll();
+         DieTwo.roll();
+         
+         roll = DieOne.getFaceValue() + DieTwo.getFaceValue();
+         switch (roll) {
+            case 2:  roll = 2;
+                     won = 20;
+                     break;
+            case 3:  roll = 3;
+                     won = 10;
+                     break;
+            case 4:  roll = 4;
+                     won = 10;
+                     break;
+            case 5:  roll = 5;
+                     loss = 10;
+                     break;
+            case 6:  roll = 6;
+                     loss = 10;
+                     break;
+            case 7:  roll = 7;
+                     loss = 10;
+                     break;
+            case 8:  roll = 8;
+                     loss = 10;
+                     break;
+            case 9:  roll = 9;
+                     won = 10;
+                     break;
+            case 10:  roll = 10;
+                     won = 10;
+                     break;
+            case 11: roll = 11;
+                     won = 10;
+                     break;
+            case 12: roll = 12;
+                     won = 20;
+                     break;
+                        }
+           total = total + won;
+           total = total - loss;
+           flips++;
+          
+       }
+                        
+          avg = (double)total / (double)N;              
+          System.out.println("The total amount of money lost is $" + total);
+          System.out.println("The average amount of money lost per roll is $" + avg);
+      }
+   }
