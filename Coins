@@ -1,0 +1,38 @@
+//Coins.java
+
+import java.text.DecimalFormat;
+public class Coins
+   {
+      public static void main(String [] args)
+      {
+       int N = 10000000;
+       int flips = 1;
+       
+       while(flips<=N)
+       {
+       int tails = 0;
+       int heads = 0;
+       int result = 0;
+       
+       MultiDie coin = new MultiDie(2);     
+       
+       for (int i = 0; i < flips; i++)
+               {coin.roll();
+               result = coin.getFaceValue();
+               if(result == 2)
+               {tails++;}
+               if(result == 1)
+               {heads++;}
+               }
+       double ratio = (double)heads/(double)flips;
+       
+       DecimalFormat numberFormat = new DecimalFormat("0.#####");
+       
+       if(flips==1)
+       {System.out.println("The ratio of time Heads appears when flipping the coin " + flips + " time: " + numberFormat.format(ratio));}
+       else
+       {System.out.println("The ratio of time Heads appears when flipping the coin " + flips + " times: " + numberFormat.format(ratio));}
+       flips = flips *10;
+       }
+      }
+    }
