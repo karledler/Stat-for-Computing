@@ -1,0 +1,39 @@
+//  DiceRoll.java       
+
+import java.awt.*;
+class DiceRoll
+   {
+      public static void main(String [] args)
+      {
+         int rolls = 100000;
+         int MAX = 6;
+         int die1, die2;
+         int equal = 0;
+         int higher = 0;
+         int lower = 0;
+
+         
+         for (int i = 0; i < rolls; i++)
+               {die1= (int)(Math.random() * MAX) + 1;
+               die2= (int)(Math.random() * MAX) + 1;
+               if(die2 == die1)
+               {equal++;}
+               if(die2 > die1)
+               {higher++;}
+               if(die2 < die1)
+               {lower++;}
+               }
+
+
+         double equalPercent = 100*((double)equal/(double)rolls);
+         double higherPercent = 100*((double)higher/(double)rolls);
+         double lowerPercent = 100*((double)lower/(double)rolls);
+         
+         
+         
+         System.out.println("The percentage of rolls equal to each other: " + equalPercent + "%");
+         System.out.println("The percentage of rolls the second roll is higher than the first: " + higherPercent + "%");
+         System.out.println("The percentage of rolls the second roll is lower than the first: " + lowerPercent + "%");
+
+      }
+   }
