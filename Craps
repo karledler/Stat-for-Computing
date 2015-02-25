@@ -1,0 +1,145 @@
+//Craps.java
+
+public class Craps
+   {
+      public static void main(String [] args)
+      {
+         double avg = 0;
+         int total = 0;
+         int totalWins = 0;
+         int totalLoss = 0;
+      
+         MultiDie DieOne = new MultiDie();
+         MultiDie DieTwo = new MultiDie();
+         
+         int roll = 0;
+         int N = 1000000;
+         int rounds = 0;
+       
+       while(rounds<N)
+       { 
+         boolean point=true;
+         int x = 0;
+         int won=0;
+         int loss=0;
+         DieOne.roll();
+         DieTwo.roll();
+         
+         roll = DieOne.getFaceValue() + DieTwo.getFaceValue();
+         switch (roll) {
+            case 2:  roll = 2;
+                     loss = 10;
+                     break;
+            case 3:  roll = 3;
+                     loss = 10;
+                     break;
+            case 4:  roll = 4;
+                     while(point==true)
+                     {
+                      DieOne.roll();
+                      DieTwo.roll();
+                      x = DieOne.getFaceValue() + DieTwo.getFaceValue();
+                      if(x==4)
+                      {won = 10;
+                      point = false;}
+                      if(x==7)
+                      {loss = 10;
+                      point = false;}
+                     }
+                     break;
+            case 5:  roll = 5;
+                     while(point==true)
+                     {
+                      DieOne.roll();
+                      DieTwo.roll();
+                      x = DieOne.getFaceValue() + DieTwo.getFaceValue();
+                      if(x==5)
+                      {won = 10;
+                      point = false;}
+                      if(x==7)
+                      {loss = 10;
+                      point = false;}
+                     }
+                     break;
+            case 6:  roll = 6;
+                     while(point==true)
+                     {
+                      DieOne.roll();
+                      DieTwo.roll();
+                      x = DieOne.getFaceValue() + DieTwo.getFaceValue();
+                      if(x==6)
+                      {won = 10;
+                      point = false;}
+                      if(x==7)
+                      {loss = 10;
+                      point = false;}
+                     }
+                     break;
+            case 7:  roll = 7;
+                     won = 10;
+                     break;
+            case 8:  roll = 8;
+                     while(point==true)
+                     {
+                      DieOne.roll();
+                      DieTwo.roll();
+                      x = DieOne.getFaceValue() + DieTwo.getFaceValue();
+                      if(x==8)
+                      {won = 10;
+                      point = false;}
+                      if(x==7)
+                      {loss = 10;
+                      point = false;}
+                     }
+                     break;
+            case 9:  roll = 9;
+                     while(point==true)
+                     {
+                      DieOne.roll();
+                      DieTwo.roll();
+                      x = DieOne.getFaceValue() + DieTwo.getFaceValue();
+                      if(x==9)
+                      {won = 10;
+                      point = false;}
+                      if(x==7)
+                      {loss = 10;
+                      point = false;}
+                     }
+                     break;
+            case 10: roll = 10;
+                     while(point==true)
+                     {
+                      DieOne.roll();
+                      DieTwo.roll();
+                      x = DieOne.getFaceValue() + DieTwo.getFaceValue();
+                      if(x==10)
+                      {won = 10;
+                      point = false;}
+                      if(x==7)
+                      {loss = 10;
+                      point = false;}
+                     }
+                     break;
+            case 11: roll = 11;
+                     won = 10;
+                     break;
+            case 12: roll = 12;
+                     loss = 10;
+                     break;
+                        }
+           total = total + won;
+           total = total - loss;
+           rounds++;
+           
+           if(won>0)
+           totalWins++;
+           if(loss>0)
+           totalLoss++;
+       }
+                        
+          avg = (double)total / (double)N;              
+          System.out.println("The total amount of money lost is $" + total);
+          System.out.println("The average amount of money lost per round is $" + avg);
+          System.out.println("Your chance of winning a round is about " + ((double)totalWins/(double)N)*100 + "%");
+      }
+   }
